@@ -1,0 +1,1 @@
+Programa destinado ao cuidado de plantas em casa
