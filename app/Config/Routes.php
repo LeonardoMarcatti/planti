@@ -35,7 +35,23 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->match(['get', 'post'], 'cadastrar', 'ActionsController::cadastrar');
+$routes->match(['get', 'post'], 'updatePlanta', 'ActionsController::updatePlanta');
+$routes->match(['get', 'post'], 'confirmadeletar', 'ActionsController::confirmaDeletar');
+$routes->match(['get', 'post'], 'cadastrarCuidado', 'ActionsController::cadastrarCuidado');
+$routes->match(['get', 'post'], 'updateCuidado', 'ActionsController::updateCuidado');
+$routes->match(['get', 'post'], 'cuidados', 'ActionsController::cuidadosTodas');
+
+$routes->get('/', 'PagesController::home');
+$routes->get('cadastroPlanta', 'PagesController::cadastroPlanta');
+$routes->get('planta', 'PagesController::verPlanta');
+$routes->get('detalhes', 'PagesController::detalhes');
+$routes->get('deletar', 'PagesController::deletar');
+$routes->get('editar', 'PagesController::getPlanta');
+$routes->get('adicionarCuidados', 'PagesController::adicionarCuidados');
+$routes->get('editarCuidado', 'PagesController::editarCuidado');
+$routes->get('deletarCuidado', 'PagesController::deletarCuidado');
+$routes->get('cuidadosTodas', 'PagesController::cuidadosTodas');
 
 /*
  * --------------------------------------------------------------------
