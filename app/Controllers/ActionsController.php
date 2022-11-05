@@ -19,7 +19,7 @@ class ActionsController extends BaseController
 
     if ($this->request->getMethod() == 'post' && $this->validate(['planta' => 'required'])) {
       $this->model->save(['nome' => $this->request->getPost('planta')]);
-      return view('Views/templates/header.php', $this->data) . view('Views/success') . view('Views/templates/footer.php');
+      return redirect()->to('/success');
     };
 
     return redirect()->to('/');

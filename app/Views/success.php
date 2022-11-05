@@ -1,7 +1,10 @@
-<main>
+<main id="success">
   <section>
     <h2><?=$title?></h2>
-    <a href="<?=base_url('/')?>">Home</a>
-    <a href="<?=base_url('/cadastroPlanta')?>">Cadastro</a>
+    <h3>Sua planta foi cadastrada com sucesso!</h3>
+    <div>
+      <a href="<?=base_url('/')?>"><button type="button" class="btn btn-success">Home</button></a>
+      <a href="<?=base_url('/cadastroPlanta')?>"><button type="button" class="btn btn-success">Cadastro</button></a>
+    </div>
   </section>
 </main>

@@ -52,6 +52,7 @@ $routes->get('adicionarCuidados', 'PagesController::adicionarCuidados');
 $routes->get('editarCuidado', 'PagesController::editarCuidado');
 $routes->get('deletarCuidado', 'PagesController::deletarCuidado');
 $routes->get('cuidadosTodas', 'PagesController::cuidadosTodas');
+$routes->get('/success', 'PagesController::success');
 
 /*
  * --------------------------------------------------------------------

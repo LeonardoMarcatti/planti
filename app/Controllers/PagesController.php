@@ -30,7 +30,7 @@ class PagesController extends BaseController
       throw new \CodeIgniter\Exceptions\PageNotFoundException('Cadastro Planta');
     };
 
-    $this->data['tab'] = 'Planti - Sucesso';
+    $this->data['tab'] = 'Planti - Cadastro';
     $this->data['title'] = 'Cadastro de Plantas';
 
     return view('Views/templates/header.php', $this->data) . view('Views/cadastroPlanta', $this->data) . view('Views/templates/footer.php');
@@ -172,5 +172,17 @@ class PagesController extends BaseController
     };
 
     return view('Views/templates/header.php', $this->data) . view('Views/cuidados', $this->data) . view('Views/templates/footer.php');
+  }
+
+  public function success()
+  {
+    $this->data['tab'] = 'Planti - Sucesso';
+    $this->data['title'] = 'Sucesso';
+
+    if (!is_file(APPPATH . 'Views/success.php')) {
+      throw new \CodeIgniter\Exceptions\PageNotFoundException('Home');
+    };
+
+    return view('Views/templates/header.php', $this->data) . view('Views/success', $this->data) . view('Views/templates/footer.php');
   }
 }

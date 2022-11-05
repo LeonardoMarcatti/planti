@@ -1,4 +1,4 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -6,13 +6,20 @@
 
 body {
   background-color: rgb(218, 255, 218);
+  background-image: url('https://www.iconpacks.net/icons/2/free-plant-icon-1573-thumb.png');
+  background-repeat: no-repeat;
+  background-position: 210% 35%;
+  background-size: 80%;
   display: grid;
   grid-template-columns: 1fr;
   min-height: 50vh;
   grid-template-rows: 50px minmax(calc(100vh - 80px), auto) 30px;
 }
 
-h2, h3, form, section > a {
+h2,
+h3,
+form,
+section>a {
   margin: 10px;
 }
 
@@ -20,7 +27,7 @@ header {
   background-image: url('https://entendaantes.com.br/wp-content/uploads/2020/10/plantas-ornamentais-3-600x338-1.jpg');
   background-repeat: no-repeat;
   background-position: 0% 65%;
-  background-size: cover; 
+  background-size: cover;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -30,11 +37,12 @@ header {
   box-shadow: 0 0 10px black;
 }
 
-header h1, h2{
+header h1,
+h2 {
   color: #198754;
 }
 
-#detalhes > section {
+#detalhes>section {
   margin-top: 20px;
   display: flex;
   flex-flow: column nowrap;
@@ -49,6 +57,32 @@ header h1, h2{
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+#success {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+#success>section {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+#success>section>div {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+#success a {
+  text-decoration: none;
 }
 
 footer {
@@ -66,7 +100,7 @@ footer a {
 }
 
 
-#home_logo > a{
+#home_logo>a {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -76,7 +110,7 @@ footer a {
   height: 40px;
 }
 
-#home_logo a{
+#home_logo a {
   padding: 0px;
   margin: 0px;
   text-decoration: none;
@@ -94,7 +128,7 @@ footer a {
   margin-top: 30px;
 }
 
-#card_planta{
+#card_planta {
   margin: 0 auto;
   margin-top: 20px;
 }
@@ -106,7 +140,7 @@ footer a {
   height: auto;
 }
 
-.card_head{
+.card_head {
   box-shadow: 0 0 10px gray;
   height: 100px;
   background-image: linear-gradient(to top, lightgreen, white);
@@ -118,7 +152,7 @@ footer a {
   align-items: flex-end;
 }
 
-.card_head > img {
+.card_head>img {
   width: 25%;
   margin: 0 auto;
 }
@@ -145,7 +179,8 @@ footer a {
   align-items: center;
 }
 
-.card_footer > a, .card_footer > a:visited {
+.card_footer>a,
+.card_footer>a:visited {
   color: white;
   text-decoration: none;
 }
@@ -160,10 +195,19 @@ footer a {
   min-width: 250px;
 }
 
-#del_planta, #del_planta > section{
+#del_planta,
+#del_planta>section {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  align-items: center;
+}
+
+#del_planta>section>form>div {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
   align-items: center;
 }
 
