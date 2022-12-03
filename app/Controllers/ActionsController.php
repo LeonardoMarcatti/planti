@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\PlantasModel;
 use app\Models\AcoesModel;
+use app\Models\TiposModel;
 
 class ActionsController extends BaseController
 {
@@ -17,8 +18,26 @@ class ActionsController extends BaseController
       throw new \CodeIgniter\Exceptions\PageNotFoundException('Success');
     };
 
-    if ($this->request->getMethod() == 'post' && $this->validate(['planta' => 'required'])) {
-      $this->model->save(['nome' => $this->request->getPost('planta')]);
+    if ($this->request->getMethod() == 'post' && $this->validate(['planta' => 'required', 'tipo' => 'required'])) {
+      $this->model->addPlanta($this->request->getPost('planta'), $this->request->getPost('tipo'));
+      return redirect()->to('/success');
+    };
+
+    return redirect()->to('/');
+  }
+
+  public function cadastrarTipo()
+  {
+    $this->model = model(TiposModel::class);
+    $this->data['tab'] = 'Planti - Sucesso';
+    $this->data['title'] = 'Sucesso!';
+
+    if (!is_file(APPPATH . 'Views/success.php')) {
+      throw new \CodeIgniter\Exceptions\PageNotFoundException('Success');
+    };
+
+    if ($this->request->getMethod() == 'post' && $this->validate(['tipo' => 'required'])) {
+      $this->model->save(['tipo' => $this->request->getPost('tipo')]);
       return redirect()->to('/success');
     };
 

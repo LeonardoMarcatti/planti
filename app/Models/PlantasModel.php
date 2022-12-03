@@ -6,7 +6,7 @@
   class PlantasModel extends Model
   {
     protected $table = 'plantas';
-    protected $allowedFields = ['nome'];
+    protected $allowedFields = ['nome', 'tipo'];
     protected $primaryKey = 'id';
 
     public function getPlantas(int $id = 0)
@@ -16,6 +16,11 @@
       };
 
       return $this->where('id', $id)->first();
+    }
+
+    public function addPlanta(string $nome, int $id)
+    {
+      return $this->insert(['nome' => $nome, 'tipo' => $id]);
     }
 
     public function deletaPlanta(int $id)

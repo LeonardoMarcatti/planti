@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\PlantasModel;
 use app\Models\AcoesModel;
+use app\Models\TiposModel;
 
 class PagesController extends BaseController
 {
@@ -32,8 +33,22 @@ class PagesController extends BaseController
 
     $this->data['tab'] = 'Planti - Cadastro';
     $this->data['title'] = 'Cadastro de Plantas';
+    $this->model = model(TiposModel::class);
+    $this->data['tipos'] = $this->model->getTipos();
 
     return view('Views/templates/header.php', $this->data) . view('Views/cadastroPlanta', $this->data) . view('Views/templates/footer.php');
+  }
+
+  public function cadastroTipos()
+  {
+    if (!is_file(APPPATH . 'Views/cadastroTipos.php')) {
+      throw new \CodeIgniter\Exceptions\PageNotFoundException('Cadastro Tipos');
+    }
+
+    $this->data['tab'] = 'Planti - Cadastro';
+    $this->data['title'] = 'Cadastro de Tipos';
+    $this->model = model(TiposModel::class);
+    return view('Views/templates/header.php', $this->data) . view('Views/cadastroTipos', $this->data) . view('Views/templates/footer.php');
   }
 
   public function verPlanta()
