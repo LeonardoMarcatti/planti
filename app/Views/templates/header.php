@@ -28,7 +28,7 @@
         Planti
       </a>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item disabled" href="<?= base_url('dicas') ?>">Dicas</a></li>
+        <li><a class="dropdown-item" href="<?= base_url('tipos') ?>">Cadastro de Tipos</a></li>
         <li><a class="dropdown-item" href="<?= base_url('cadastroPlanta') ?>">Cadastro de Plantas</a></li>
         <li><a class="dropdown-item" href="<?= base_url('cuidadosTodas') ?>">Cuidados - Todas</a></li>
       </ul>

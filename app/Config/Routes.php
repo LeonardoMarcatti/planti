@@ -41,8 +41,10 @@ $routes->match(['get', 'post'], 'confirmadeletar', 'ActionsController::confirmaD
 $routes->match(['get', 'post'], 'cadastrarCuidado', 'ActionsController::cadastrarCuidado');
 $routes->match(['get', 'post'], 'updateCuidado', 'ActionsController::updateCuidado');
 $routes->match(['get', 'post'], 'cuidados', 'ActionsController::cuidadosTodas');
+$routes->match(['get', 'post'], 'cadastrarTipo', 'ActionsController::cadastrarTipo');
 
 $routes->get('/', 'PagesController::home');
+$routes->get('/tipos', 'PagesController::cadastroTipos');
 $routes->get('cadastroPlanta', 'PagesController::cadastroPlanta');
 $routes->get('planta', 'PagesController::verPlanta');
 $routes->get('detalhes', 'PagesController::detalhes');
