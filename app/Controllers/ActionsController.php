@@ -75,7 +75,25 @@ class ActionsController extends BaseController
       $this->model->adicionarAcao($this->request->getPost('id'), $this->request->getPost('acao'));
     };
 
-    return redirect()->to('planta?id=' . $id);
+    return redirect()->to('/successAction');
+  }
+
+  public function cuidadosTipo()
+  {
+    if ($this->request->getMethod() == 'post' && $this->validate(['tipo' => 'required', 'acao' => 'required'])) {
+      $this->model = model(PlantasModel::class);
+      $tipo = $this->request->getPost('tipo');
+      $list = $this->model->getPlantasByTipo($tipo);
+
+      $acao = $this->request->getPost('acao');
+      $this->model = model(AcoesModel::class);
+
+      foreach ($list as $key => $value) {
+        $this->model->addCuidadoTipo($value['id'], $acao);
+      };
+
+      return redirect()->to('/successTipo');
+    };
   }
 
   public function updateCuidado()

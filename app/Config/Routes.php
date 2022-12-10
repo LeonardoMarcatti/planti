@@ -42,6 +42,7 @@ $routes->match(['get', 'post'], 'cadastrarCuidado', 'ActionsController::cadastra
 $routes->match(['get', 'post'], 'updateCuidado', 'ActionsController::updateCuidado');
 $routes->match(['get', 'post'], 'cuidados', 'ActionsController::cuidadosTodas');
 $routes->match(['get', 'post'], 'cadastrarTipo', 'ActionsController::cadastrarTipo');
+$routes->match(['get', 'post'], 'cuidadosTipo', 'ActionsController::cuidadosTipo');
 
 $routes->get('/', 'PagesController::home');
 $routes->get('/tipos', 'PagesController::cadastroTipos');
@@ -54,7 +55,10 @@ $routes->get('adicionarCuidados', 'PagesController::adicionarCuidados');
 $routes->get('editarCuidado', 'PagesController::editarCuidado');
 $routes->get('deletarCuidado', 'PagesController::deletarCuidado');
 $routes->get('cuidadosTodas', 'PagesController::cuidadosTodas');
+$routes->get('cuidadosTipos', 'PagesController::cuidadosTipos');
 $routes->get('/success', 'PagesController::success');
+$routes->get('/successTipo', 'PagesController::successTipo');
+$routes->get('/successAction', 'PagesController::successAction');
 
 /*
  * --------------------------------------------------------------------

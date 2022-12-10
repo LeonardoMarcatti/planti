@@ -28,6 +28,11 @@
       $this->insert(['acao' => $acao, 'id_planta' => $id]);
     }
 
+    public function addCuidadoTipo(int $id, string $acao)
+    {
+      $this->insert(['acao' => $acao, 'id_planta' => $id]);
+    }
+
     public function getCuidado(int $id)
     {
       return $this->where('id', $id)->get()->getRowArray();

@@ -47,7 +47,7 @@ class PagesController extends BaseController
 
     $this->data['tab'] = 'Planti - Cadastro';
     $this->data['title'] = 'Cadastro de Tipos';
-    $this->model = model(TiposModel::class);
+
     return view('Views/templates/header.php', $this->data) . view('Views/cadastroTipos', $this->data) . view('Views/templates/footer.php');
   }
 
@@ -183,10 +183,24 @@ class PagesController extends BaseController
     $this->data['title'] = 'Adicionar cuidados a todas as plantas cadastradas';
     
     if (!is_file(APPPATH . 'Views/cuidados.php')) {
-      throw new \CodeIgniter\Exceptions\PageNotFoundException('Home');
+      throw new \CodeIgniter\Exceptions\PageNotFoundException('Cuidados');
     };
 
     return view('Views/templates/header.php', $this->data) . view('Views/cuidados', $this->data) . view('Views/templates/footer.php');
+  }
+
+  public function cuidadosTipos()
+  {
+    $this->data['tab'] = 'Planti - Tipos';
+    $this->data['title'] = 'Adicionar cuidados as plantas por tipo';
+    $this->model = model(TiposModel::class);
+    $this->data['tipos'] = $this->model->getTipos();
+    
+    if (!is_file(APPPATH . 'Views/cuidados.php')) {
+      throw new \CodeIgniter\Exceptions\PageNotFoundException('Cuidados');
+    };
+
+    return view('Views/templates/header.php', $this->data) . view('Views/cuidadosTipos', $this->data) . view('Views/templates/footer.php');
   }
 
   public function success()
@@ -195,9 +209,33 @@ class PagesController extends BaseController
     $this->data['title'] = 'Sucesso';
 
     if (!is_file(APPPATH . 'Views/success.php')) {
-      throw new \CodeIgniter\Exceptions\PageNotFoundException('Home');
+      throw new \CodeIgniter\Exceptions\PageNotFoundException('Sucesso');
     };
 
     return view('Views/templates/header.php', $this->data) . view('Views/success', $this->data) . view('Views/templates/footer.php');
+  }
+
+  public function successTipo()
+  {
+    $this->data['tab'] = 'Planti - Sucesso';
+    $this->data['title'] = 'Sucesso';
+
+    if (!is_file(APPPATH . 'Views/successTipo.php')) {
+      throw new \CodeIgniter\Exceptions\PageNotFoundException('Sucesso');
+    };
+
+    return view('Views/templates/header.php', $this->data) . view('Views/successTipo', $this->data) . view('Views/templates/footer.php');
+  }
+
+  public function successAction()
+  {
+    $this->data['tab'] = 'Planti - Sucesso';
+    $this->data['title'] = 'Sucesso';
+
+    if (!is_file(APPPATH . 'Views/successAction.php')) {
+      throw new \CodeIgniter\Exceptions\PageNotFoundException('Sucesso');
+    };
+
+    return view('Views/templates/header.php', $this->data) . view('Views/successAction', $this->data) . view('Views/templates/footer.php');
   }
 }

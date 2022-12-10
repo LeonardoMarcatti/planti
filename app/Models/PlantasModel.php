@@ -18,6 +18,11 @@
       return $this->where('id', $id)->first();
     }
 
+    public function getPlantasByTipo(int $tipo)
+    {
+      return $this->select('id')->where('tipo', $tipo)->findAll();
+    }
+
     public function addPlanta(string $nome, int $id)
     {
       return $this->insert(['nome' => $nome, 'tipo' => $id]);

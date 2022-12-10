@@ -30,6 +30,8 @@
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="<?= base_url('tipos') ?>">Cadastro de Tipos</a></li>
         <li><a class="dropdown-item" href="<?= base_url('cadastroPlanta') ?>">Cadastro de Plantas</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="<?= base_url('cuidadosTipos') ?>">Cuidados - Por Tipo</a></li>
         <li><a class="dropdown-item" href="<?= base_url('cuidadosTodas') ?>">Cuidados - Todas</a></li>
       </ul>
     </div>
