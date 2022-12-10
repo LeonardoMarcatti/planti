@@ -15,10 +15,10 @@
           ?>
         </ol>
         <div class="card_footer">
-          <a href="detalhes?id=<?=$_GET['id']?>" id="btn_detalhes" class="btn btn-success">Detalhes</a>
+          <a href="detalhes?id=<?=$_GET['id']?>" id="btn_detalhes" class="btn btn-success">Cuidados - Detalhes</a>
           <a href="adicionarCuidados?id=<?=$_GET['id']?>" class="btn btn-success">Adicionar Cuidados</a>
-          <a href="editar?id=<?=$_GET['id']?>" id="btn_detalhes" class="btn btn-success">Editar</a>
-          <a href="deletar?id=<?=$_GET['id']?>" id="btn_detalhes" class="btn btn-danger">Deletar</a>
+          <a href="editar?id=<?=$_GET['id']?>" id="btn_detalhes" class="btn btn-success">Editar Nome</a>
+          <a href="deletar?id=<?=$_GET['id']?>" id="btn_detalhes" class="btn btn-danger">Deletar Planta</a>
         </div>      
       </div>
   </div>
