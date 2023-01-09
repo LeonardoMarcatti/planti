@@ -8,6 +8,9 @@ use app\Models\TiposModel;
 
 class ActionsController extends BaseController
 {
+  private object $model;
+  private ?array $data;
+
   public function cadastrar()
   {
     $this->model = model(PlantasModel::class);
@@ -75,7 +78,7 @@ class ActionsController extends BaseController
       $this->model->adicionarAcao($this->request->getPost('id'), $this->request->getPost('acao'));
     };
 
-    return redirect()->to('/successAction');
+    return redirect()->to("/successAction?id=" . $id);
   }
 
   public function cuidadosTipo()
@@ -117,8 +120,6 @@ class ActionsController extends BaseController
         $this->model->adicionarAcao($value['id'], $this->request->getPost('acao'));
       };
       return redirect()->to('/');
-    };
-
-    
+    };    
   }
 }

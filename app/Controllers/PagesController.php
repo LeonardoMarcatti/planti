@@ -148,6 +148,7 @@ class PagesController extends BaseController
     $id =  \filter_input(\INPUT_GET, 'id', \FILTER_SANITIZE_NUMBER_INT);
     $this->data['title'] = 'Adicionar Cuidado';
     $this->data['tab'] = 'Planti - Cuidados';
+    $this->data['id'] = $id;
 
     return view('Views/templates/header', $this->data). view('Views/adicionaCuidado', $this->data) . view('Views/templates/footer');
   }

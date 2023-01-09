@@ -12,7 +12,7 @@ body {
   background-size: 80%;
   display: grid;
   grid-template-columns: 1fr;
-  min-height: 50vh;
+  min-height: 100vh;
   grid-template-rows: 50px minmax(calc(100vh - 80px), auto) 30px;
 }
 

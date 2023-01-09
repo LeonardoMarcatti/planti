@@ -4,10 +4,10 @@
     <?= session()->getFlashdata('error') ?>
     <?= service('validation')->listErrors() ?>
     <div class="col-4 offset-4">
-      <form action="cadastrarCuidado" method="post">
+      <form action="cadastrarCuidado?id=<?=$id?>" method="post">
         <?= csrf_field() ?>
         <div class="mb-3">
-        <input type="number" name="id" id="id" value="<?=$_GET['id']?>" hidden>
+        <input type="number" name="id" id="id" value="<?=$id?>" hidden>
           <label for="acao" class="form-label">Cuidado:</label>
           <textarea name="acao" id="acao" class="form-control" required cols="30" rows="10"></textarea>
         </div>
