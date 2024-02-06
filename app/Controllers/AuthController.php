@@ -18,7 +18,7 @@ class AuthController extends BaseController
             $this->model = new UsersModel();
             $result = $this->model->addUser($post['name'], md5($post['email']), md5($post['password']));
             if ($result) {
-                return redirect()->to("login");
+                return \redirect()->to("login");
             }
             
             return \redirect()->route('logup')->withInput()->with('bad_email', 'Email em uso') ;

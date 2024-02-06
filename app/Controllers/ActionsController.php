@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\PlantasModel;
 use App\Models\AcoesModel;
 use App\Models\TiposModel;
+use App\Models\UsersTiposModel;
 
 class ActionsController extends BaseController
 {
@@ -31,35 +32,73 @@ class ActionsController extends BaseController
     return \redirect()->route('cadastroPlanta')->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10)); 
   }
 
-  public function cadastrarTipo()
+   private function checkUsersTipos(string $tipo)
+   {
+      $this->model = model(UsersTiposModel::class);
+      $result = $this->model->checkUsersTipos(session()->get('id'), $tipo);
+      return $result;
+   }
+
+   private function cadastrarUsersTipos(string $tipo)
+   {
+      $this->model = model(UsersTiposModel::class);
+
+      if (!$this->model->checkUsersTipos(session()->get('id'), $tipo)) {
+         $this->model->save(['id_user' => session()->get('id'), 'id_tipo' => $tipo]);
+         return true;
+      }
+
+      return false;
+  }
+
+  private function checkTipo(string $tipo) : bool
   {
     $this->model = model(TiposModel::class);
-    $this->data['tab'] = 'Planti - Sucesso';
-    $this->data['title'] = 'Sucesso!';
+    return $this->model->checkTipo($tipo);
+  }
 
-    if (!is_file(APPPATH . 'Views/success.php')) {
-      throw new \CodeIgniter\Exceptions\PageNotFoundException('Success');
-    };
+  public function cadastrarTipo()
+  {
+      $this->model = model(TiposModel::class);
+      $this->data['tab'] = 'Planti - Sucesso';
+      $this->data['title'] = 'Sucesso!';
 
-    $post = $this->request->getPost(['tipo']);
+      if (!is_file(APPPATH . 'Views/success.php')) {
+         throw new \CodeIgniter\Exceptions\PageNotFoundException('Success');
+      };
 
-    if (!empty($post) && $this->validateData($post, ['tipo' => 'required|min_length[3]'], ['tipo' => ['required' => 'O campo é obrigatório!', 'min_length' => 'Digite pelo menos 3 caracteres']])) {
-      $this->model->save(['tipo' => $this->request->getPost('tipo'), 'id_user' => \session()->get('id')]);
-      return redirect()->to('/successTipo');
-    };
+      $post = $this->request->getPost(['tipo']);
 
-    return \redirect()->route('tipo')->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));
+      if (!empty($post) && $this->validateData($post, ['tipo' => 'required|min_length[3]'], ['tipo' => ['required' => 'O campo é obrigatório!', 'min_length' => 'Digite pelo menos 3 caracteres']])) {
+
+         if (!$this->checkTipo($post['tipo'])) {
+            $this->model->save(['tipo' => $post['tipo']]);
+         }
+
+         $id = $this->model->getIDByTipo($post['tipo']);
+         $result = $this->cadastrarUsersTipos($id);
+
+         if ($result) {
+            return redirect()->to('/successTipo');
+         } else {
+            return 'Error!';
+         }
+
+         return 'ok';
+      }
+
+      return \redirect()->route('tipo')->with('errors', \session()->setTempdata('err', $this->validator->getErrors(), 10));
   }
 
   public function updatePlanta()
   {
-    $this->model = model(PlantasModel::class);
+      $this->model = model(PlantasModel::class);
 
-    if ($this->request->getMethod() == 'post' && $this->validate(['id' => 'required', 'nome' => 'required'])) {
+      if ($this->request->getMethod() == 'post' && $this->validate(['id' => 'required', 'nome' => 'required'])) {
       $this->model->updatePlanta(intval($this->request->getPost('id')), strval($this->request->getPost('nome')));
-    };
+      };
 
-    return redirect()->route('home');
+      return redirect()->route('home');
   }
 
   public function confirmaDeletar()
